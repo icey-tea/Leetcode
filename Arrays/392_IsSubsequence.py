@@ -7,6 +7,24 @@
 # (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
 
 
+###Answer 1
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        i=j=0
+        while i < len(s) and j < len(t):
+            if s[i]==t[j]:
+                i+=1 #because of this
+                j+=1
+            else:
+                j+=1
+        return i == len(s)
+
+#This one is shorter because we dont need to append any times and we only just
+#if i has ran through the whole list --->#
+    
+###Answer 2
+
+
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
         i=j=0
@@ -16,7 +34,6 @@ class Solution:
                 ans.append(s[i])
                 i+=1
                 j+=1
-
             else:
                 j+=1
         ans = ''.join(ans)
