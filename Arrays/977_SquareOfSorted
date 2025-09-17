@@ -1,0 +1,28 @@
+### Question
+# Given an integer array nums sorted in non-decreasing order, return an array of 
+# the squares of each number sorted in non-decreasing order.
+
+# Follow up: Squaring each element and sorting the new array is very trivial, 
+# could you find an O(n) solution using a different approach?
+
+class Solution:
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        squared = list(map(lambda x: x*x, nums))
+        c = -1
+        i, j  = 0, len(nums)-1
+        ans = [0]*len(nums)
+        while i < j and c > -(len(nums))-1:
+            if squared[i] < squared[j]:
+                ans[c] = squared[j]
+                c-=1
+                j-=1
+            else:
+                ans[c] = squared[i]
+                c-=1
+                i+=1
+        if i < j:
+            ans[c] = squared[i]
+        else:
+            ans[c] = squared[j]
+        return ans
+    
