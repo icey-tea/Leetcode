@@ -26,3 +26,4 @@ class Solution:
             ans[c] = squared[j]
         return ans
     
+##Note this could be done better with a for loop for iterating through the new array
