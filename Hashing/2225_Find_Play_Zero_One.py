@@ -37,3 +37,29 @@ class Solution:
 #     or chceck if there is a difference of two between the two and just append it to answer[1]
 
 
+##############
+This is a better Solution
+
+class Solution:
+    def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
+        OnlyWins , MoreLosses , OneLoss = set(),set(),set()
+        for match in matches:
+            winner = match[0]
+            loser = match[1]
+            if winner not in MoreLosses and winner not in OneLoss:
+                OnlyWins.add(winner)
+
+            if loser in OnlyWins:
+                OnlyWins.remove(loser)
+                OneLoss.add(loser)
+            elif loser in OneLoss:
+                OneLoss.remove(loser)
+                MoreLosses.add(loser)
+            elif loser in MoreLosses:
+                continue
+            else:
+                OneLoss.add(loser)
+        answer = [sorted(list(OnlyWins)), sorted(list(OneLoss))]
+        return answer
+            
+            
