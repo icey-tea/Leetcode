@@ -38,7 +38,7 @@ class Solution:
 
 
 ##############
-This is a better Solution
+# This is a better Solution
 
 class Solution:
     def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
