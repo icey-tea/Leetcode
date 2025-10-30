@@ -32,3 +32,20 @@ class Solution:
 #     and the the index of the last occurence of the card
 
 # if it is not in count then just append the index it occured at to count
+
+
+class Solution:
+    def minimumCardPickup(self, cards: List[int]) -> int:
+        ans  = float('inf')
+        count = {}
+        for i in range(len(cards)):
+            if cards[i] in count:
+                ans = min(ans, i - count[cards[i]] +1 )
+            count[cards[i]] = i
+        if ans != float('inf'):
+            return ans
+        else:
+            return -1
+        
+
+# more optimized code
