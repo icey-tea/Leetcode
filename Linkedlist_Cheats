@@ -1,0 +1,20 @@
+The Cheeky Linked List Formula is a simple framework for solving almost any linked list pointer problem with confidence. It starts with creating a dummy node—a fake node placed before the head of the list. This dummy node protects your original head and makes reconnections easier, since you can always return dummy.next at the end, no matter how you modify the list.
+
+Next, always keep track of three pointers: prev, current, and next (or sometimes a, b, and c). Every linked list operation—swapping, deleting, or reversing—boils down to reconnecting these three nodes in a certain order. Before you change any links, it’s crucial to save the next node using a variable like next_pair = head.next.next. This step ensures you don’t lose access to the rest of the list, which is one of the most common mistakes in pointer problems.
+
+When updating connections, remember the rule: rewire first, move later. That means fix the links for the current set of nodes before advancing head or prev. Only after the current pair or section is correctly connected should you move the pointers forward. This approach keeps your links intact and prevents skipped or lost nodes.
+
+Your loop condition also matters. Use while head and head.next: when dealing with pairs of nodes, or while head: when handling single-node operations. This prevents NoneType errors and ensures your algorithm stops cleanly when you reach the end of the list.
+
+When reconnecting nodes, a safe and common pattern is:
+
+prev.next = second
+first.next = second.next
+second.next = first
+
+
+This order ensures every node stays linked correctly without breaking the chain.
+
+Finally, when the loop finishes, always return dummy.next. Because the dummy node was placed before everything, this guarantees you return the correct new head—whether the original head was swapped, deleted, or reversed.
+
+In short, the cheeky mindset is: always protect your head with a dummy, always peek ahead before breaking links, always finish your rewiring before moving forward, and if you ever get lost, simply ask yourself, “Who points to whom right now?” Following this mental flow will make even tricky pointer problems feel consistent and intuitive.
